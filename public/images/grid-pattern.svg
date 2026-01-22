@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" height="100%" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <pattern id="grid-pattern" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+      <!-- Main grid lines (subtle) -->
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(100, 200, 255, 0.1)" stroke-width="0.5"/>
+      
+      <!-- Diagonal micro pattern (tech feel) -->
+      <path d="M 0 20 L 20 0 M 0 40 L 40 0 M 0 60 L 60 0 M 20 60 L 60 20 M 40 60 L 60 40" 
+            fill="none" 
+            stroke="rgba(100, 200, 255, 0.05)" 
+            stroke-width="0.3"/>
+            
+      <!-- Dot pattern at intersections -->
+      <circle cx="0" cy="0" r="0.5" fill="rgba(100, 200, 255, 0.15)"/>
+      <circle cx="30" cy="0" r="0.5" fill="rgba(100, 200, 255, 0.15)"/>
+      <circle cx="0" cy="30" r="0.5" fill="rgba(100, 200, 255, 0.15)"/>
+      <circle cx="30" cy="30" r="0.5" fill="rgba(100, 200, 255, 0.15)"/>
+      <circle cx="60" cy="0" r="0.5" fill="rgba(100, 200, 255, 0.15)"/>
+      <circle cx="0" cy="60" r="0.5" fill="rgba(100, 200, 255, 0.15)"/>
+      
+      <!-- Subtle binary code effect -->
+      <text x="5" y="15" font-family="monospace" font-size="4" fill="rgba(100, 200, 255, 0.1)" opacity="0.5">1010</text>
+      <text x="35" y="15" font-family="monospace" font-size="4" fill="rgba(100, 200, 255, 0.1)" opacity="0.5">1101</text>
+      <text x="5" y="45" font-family="monospace" font-size="4" fill="rgba(100, 200, 255, 0.1)" opacity="0.5">0110</text>
+      <text x="35" y="45" font-family="monospace" font-size="4" fill="rgba(100, 200, 255, 0.1)" opacity="0.5">1001</text>
+    </pattern>
+    
+    <!-- Glow effect for animated elements -->
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+  
+  <!-- Background fill with pattern -->
+  <rect width="100%" height="100%" fill="url(#grid-pattern)"/>
+  
+  <!-- Animated circuit-like paths -->
+  <path d="M 100 100 Q 200 50 300 100 T 500 100" 
+        fill="none" 
+        stroke="rgba(100, 200, 255, 0.1)" 
+        stroke-width="1" 
+        stroke-dasharray="5,5">
+    <animate attributeName="stroke-dashoffset" from="0" to="20" dur="10s" repeatCount="indefinite"/>
+  </path>
+  
+  <path d="M 50 300 Q 150 250 250 300 T 450 300" 
+        fill="none" 
+        stroke="rgba(100, 200, 255, 0.1)" 
+        stroke-width="1" 
+        stroke-dasharray="5,5">
+    <animate attributeName="stroke-dashoffset" from="0" to="20" dur="8s" repeatCount="indefinite"/>
+  </path>
+  
+  <!-- Subtle floating nodes -->
+  <circle cx="150" cy="200" r="3" fill="rgba(100, 200, 255, 0.2)" filter="url(#glow)">
+    <animate attributeName="r" values="3;5;3" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  
+  <circle cx="400" cy="350" r="2" fill="rgba(100, 200, 255, 0.2)" filter="url(#glow)">
+    <animate attributeName="r" values="2;4;2" dur="5s" repeatCount="indefinite"/>
+  </circle>
+  
+  <circle cx="250" cy="450" r="2.5" fill="rgba(100, 200, 255, 0.2)" filter="url(#glow)">
+    <animate attributeName="r" values="2.5;3.5;2.5" dur="6s" repeatCount="indefinite"/>
+  </circle>
+</svg>

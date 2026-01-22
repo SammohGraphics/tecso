@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+/* :root {
+  --background: #ffffff;
+  --foreground: #171717;
+} */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f172a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+/* Marquee animation */
+.marquee-text {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+/* Partner hover effects */
+.partner-wrapper img {
+  transition: all 0.3s ease;
+}
+
+.partner-wrapper img:hover {
+  transform: scale(1.1);
+  filter: brightness(1.1);
+}
+
+/* Marquee animation */
+.marquee-text {
+  will-change: transform;
+}
+
+/* Partner logo hover effects */
+.partner-wrapper img:not([alt="Divider"]):hover {
+  filter: drop-shadow(0 0 8px rgba(56, 182, 255, 0.6));
+  transform: translateY(-2px);
+}
+
+/* Gradient text */
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}

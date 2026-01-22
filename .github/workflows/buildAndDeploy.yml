@@ -1,0 +1,38 @@
+on:
+  push:
+    branches:
+      - main
+name: 🚀 Deploy front-end git action
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20"
+
+      - name: Install npm packages
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+        env:
+          app_env: pro
+          CI: false
+
+        if: ${{ env.app_env == 'pro' }}
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftp.tecso.co.tz
+          username: sammoh@tecso.co.tz
+          password: Tecso@2026
+          server-dir: /
+          local-dir: ./dist/
