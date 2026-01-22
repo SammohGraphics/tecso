@@ -34,6 +34,6 @@ jobs:
         with:
           server: ftp.tecso.co.tz
           username: tecso@tecso.co.tz
-          password: TecsoFTP@123#
+          password: tecsoFTP@123#
           server-dir: /
           local-dir: ./dist/
