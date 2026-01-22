@@ -1,15 +1,20 @@
+name: 🚀 Deploy front-end git action
+
 on:
   push:
     branches:
       - main
-name: 🚀 Deploy front-end git action
+
+env:
+  app_env: pro
+  CI: false
+
 jobs:
   web-deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
       - name: 🚚 Get latest code
-
         uses: actions/checkout@v3
 
       - name: Use Node.js 20
@@ -22,12 +27,8 @@ jobs:
 
       - name: Build project
         run: npm run build
-
-        env:
-          app_env: pro
-          CI: false
-
         if: ${{ env.app_env == 'pro' }}
+
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
